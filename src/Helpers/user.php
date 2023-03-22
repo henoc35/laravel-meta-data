@@ -50,10 +50,9 @@ if (!function_exists('delete_user_meta')) {
     /**
      * @param $user_id
      * @param string|null $key
-     * @param mixed $value
      * @return bool
      */
-    function delete_user_meta($user_id, ?string $key = null, mixed $value): bool
+    function delete_user_meta($user_id, ?string $key = null): bool
     {
         $meta = \CityHunter\LaravelMetaData\User\UserMeta::getInstance();
         return $meta->deleteUserMeta($user_id, $key);

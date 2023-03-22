@@ -17,11 +17,11 @@
         "php": "^7.3|^8.0|^8.1|^8.2",
         "illuminate/support": "^8.0|^9.0|^10.0",
         "illuminate/database": "^8.0|^9.0|^10.0",
-        "laravel/framework": "^10.4"
+        "laravel/framework": "^8.0|^9.0|^10.0"
     },
     "autoload": {
         "psr-4": {
-            "\\CityHunter\\LaravelMetaData\\": "src/"
+            "CityHunter\\LaravelMetaData\\": "src/"
         },
         "files": [
             "./src/Helpers/user.php"
@@ -29,7 +29,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "\\CityHunter\\LaravelMetaData\\Tests\\": "tests/"
+            "CityHunter\\LaravelMetaData\\Tests\\": "tests/"
         }
     },
     "extra": {
@@ -45,7 +45,7 @@
         "phpro/grumphp": "^1.15",
         "squizlabs/php_codesniffer": "^3.7",
         "fakerphp/faker": "^1.21",
-        "laravel/laravel": "^10.0",
+        "laravel/laravel": "^8.0|^9.0|^10.0",
         "mockery/mockery": "^1.5",
         "orchestra/testbench": "^8.0"
     },
