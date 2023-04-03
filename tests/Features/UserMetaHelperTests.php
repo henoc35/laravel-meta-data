@@ -2,7 +2,6 @@
 
 namespace CityHunter\LaravelMetaData\Tests\Features;
 
-
 use CityHunter\LaravelMetaData\Tests\TestCase;
 
 class UserMetaHelperTests extends TestCase
@@ -134,6 +133,4 @@ class UserMetaHelperTests extends TestCase
 //        dd($result);
 //        $this->assertEquals($expectedResult, $result);
 //    }
-
-
 }

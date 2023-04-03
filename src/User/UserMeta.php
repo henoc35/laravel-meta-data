@@ -41,14 +41,14 @@ class UserMeta
      * @param string|null $key
      * @param bool $unique
      * @param string $orderBy
-     * @return Model|Collection|Builder|array|null
+     * @return string|array|null
      */
     public function getUserMeta(
         $user_id,
         ?string $key,
         bool $unique = false,
         string $orderBy = 'created_at'
-    ): Model|\Illuminate\Database\Eloquent\Collection|Builder|array|null {
+    ): array|string|null {
         $request = [
             'user_id' => $user_id
         ];
@@ -58,9 +58,9 @@ class UserMeta
         $query = $this->userMeta->newQuery()->where($request);
         if ($unique) {
             $query->orderByDesc($orderBy);
-            return $query->first();
+            return $query->first()->meta_value;
         }
-        return $query->get();
+        return $query->get()->pluck("meta_value")->all();
     }
 
     /**
@@ -88,14 +88,18 @@ class UserMeta
      */
     public function updateUserMeta($user_id, string $key, $value): bool
     {
-        return $this->userMeta->newQuery()
+         $existingMeta = $this->userMeta->newQuery()
             ->where([
                 'user_id' => $user_id,
                 'meta_key' => $key
-            ])
-            ->update([
-                'meta_value' => $value
-            ]);
+            ])->first();
+
+        if (is_null($existingMeta)) {
+            return $this->addUserMeta($user_id, $key, $value);
+        }
+        return $existingMeta->update([
+            'meta_value' => $value
+        ]);
     }
 
     /**

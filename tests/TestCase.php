@@ -9,8 +9,6 @@ use Illuminate\Database\Eloquent\Factory as EloquentFactory;
 
 use function Orchestra\Testbench\artisan;
 
-
-
 abstract class TestCase extends \Orchestra\Testbench\TestCase
 {
     use RefreshDatabase;

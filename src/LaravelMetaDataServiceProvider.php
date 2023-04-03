@@ -9,18 +9,16 @@ class LaravelMetaDataServiceProvider extends ServiceProvider
     public function boot()
     {
         $base = dirname(__DIR__) . '/core';
-        $this->loadMigrationsFrom($base . '/migrations/2023_03_01_000000_laravel_meta_data_table.php');
 
         $this->publishes([
             $base . '/config/meta_data.php' => config_path('meta_data.php')
         ], 'config');
 
         $this->publishes([
-            $base . '/migrations/2023_03_01_000000_laravel_meta_data_table.php' => database_path('migrations/' . date('Y_m_d_His') . '_laravel_meta_data_table.php'),
+            $base . '/migrations/2023_03_01_000000_laravel_meta_data_table.php' => database_path(
+                'migrations/' . date('Y_m_d_His') . '_laravel_meta_data_table.php'
+            ),
         ], 'migrations');
-
-
-
     }
 
 

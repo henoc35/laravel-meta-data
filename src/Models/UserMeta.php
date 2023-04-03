@@ -5,9 +5,6 @@ namespace CityHunter\LaravelMetaData\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Config;
 
-
-
-
 class UserMeta extends Model
 {
     /**

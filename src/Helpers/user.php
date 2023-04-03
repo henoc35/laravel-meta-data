@@ -9,9 +9,9 @@ if (!function_exists('get_user_meta')) {
      * @param $user_id
      * @param string|null $key
      * @param bool $unique
-     * @return Model|Collection|Builder|array|null
+     * @return string|array|null
      */
-    function get_user_meta($user_id, ?string $key = null, bool $unique = false): Model|Collection|Builder|array|null
+    function get_user_meta($user_id, ?string $key = null, bool $unique = false): string|array|null
     {
         $meta = \CityHunter\LaravelMetaData\User\UserMeta::getInstance();
         return $meta->getUserMeta($user_id, $key, $unique);
@@ -58,4 +58,3 @@ if (!function_exists('delete_user_meta')) {
         return $meta->deleteUserMeta($user_id, $key);
     }
 }
-
