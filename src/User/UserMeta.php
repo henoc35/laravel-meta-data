@@ -58,8 +58,12 @@ class UserMeta
         $query = $this->userMeta->newQuery()->where($request);
         if ($unique) {
             $query->orderByDesc($orderBy);
-            return $query->first()->meta_value;
+            if (!is_null($result = $query->first())) {
+                return $result->meta_value;
+            }
+            return null;
         }
+
         return $query->get()->pluck("meta_value")->all();
     }
 

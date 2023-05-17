@@ -30,4 +30,12 @@ class UserMetaTest extends TestCase
         $this->assertTrue(is_array(\get_user_meta($user->id, "test_key")));
         $this->assertTrue(is_string(\get_user_meta($user->id, "test_key", true)));
     }
+
+    public function testGetMetaWithNotExistKey()
+    {
+        $user = UserFactory::new()->create();
+        $this->assertSame(null, get_user_meta($user->id, "My_undefined_key", true));
+        $this->assertEmpty(get_user_meta($user->id, "My_undefined_key_sr"));
+        $this->assertEmpty(get_user_meta($user->id));
+    }
 }
