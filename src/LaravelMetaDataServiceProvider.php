@@ -8,7 +8,7 @@ class LaravelMetaDataServiceProvider extends ServiceProvider
 {
     public function boot()
     {
-        $base = dirname(__DIR__) . '/core';
+        $base = dirname(__DIR__) . DIRECTORY_SEPARATOR . 'core';
 
         $this->publishes([
             $base . '/config/meta_data.php' => config_path('meta_data.php')
@@ -29,6 +29,6 @@ class LaravelMetaDataServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        $this->mergeConfigFrom(__DIR__ . './../core/config/meta_data.php', 'meta_data');
+        $this->mergeConfigFrom(dirname(__DIR__) . DIRECTORY_SEPARATOR . 'core/config/meta_data.php', 'meta_data');
     }
 }
